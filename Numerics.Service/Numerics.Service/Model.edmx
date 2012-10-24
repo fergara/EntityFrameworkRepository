@@ -1,0 +1,773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Numerics.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="NumericsModelStoreContainer">
+    <EntitySet Name="Products" EntityType="Numerics.Model.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Assets" EntityType="Numerics.Model.Store.Assets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Positions" EntityType="Numerics.Model.Store.Positions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductFamilies" EntityType="Numerics.Model.Store.ProductFamilies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductSubFamilies" EntityType="Numerics.Model.Store.ProductSubFamilies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Counterparties" EntityType="Numerics.Model.Store.Counterparties" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Prices" EntityType="Numerics.Model.Store.Prices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Trades" EntityType="Numerics.Model.Store.Trades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CashEvents" EntityType="Numerics.Model.Store.CashEvents" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LegalEntities" EntityType="Numerics.Model.Store.LegalEntities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Books" EntityType="Numerics.Model.Store.Books" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CashFlows" EntityType="Numerics.Model.Store.CashFlows" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Currencies" EntityType="Numerics.Model.Store.Currencies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Assets_SecurityAsset" EntityType="Numerics.Model.Store.Assets_SecurityAsset" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Assets_RepoAsset" EntityType="Numerics.Model.Store.Assets_RepoAsset" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Positions_SecurityPosition" EntityType="Numerics.Model.Store.Positions_SecurityPosition" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Positions_CashPosition" EntityType="Numerics.Model.Store.Positions_CashPosition" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Assets_FutureAsset" EntityType="Numerics.Model.Store.Assets_FutureAsset" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Trades_SecurityTrade" EntityType="Numerics.Model.Store.Trades_SecurityTrade" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Trades_RepoTrade" EntityType="Numerics.Model.Store.Trades_RepoTrade" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ProductFamilyProductSubFamily" Association="Numerics.Model.Store.ProductFamilyProductSubFamily">
+      <End Role="ProductFamily" EntitySet="ProductFamilies" />
+      <End Role="ProductSubFamily" EntitySet="ProductSubFamilies" />
+    </AssociationSet>
+    <AssociationSet Name="ProductSubFamilyProduct" Association="Numerics.Model.Store.ProductSubFamilyProduct">
+      <End Role="ProductSubFamily" EntitySet="ProductSubFamilies" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="LegalEntityBook" Association="Numerics.Model.Store.LegalEntityBook">
+      <End Role="LegalEntity" EntitySet="LegalEntities" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="TradeBook" Association="Numerics.Model.Store.TradeBook">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="PositionBook" Association="Numerics.Model.Store.PositionBook">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="LegalEntityCurrency" Association="Numerics.Model.Store.LegalEntityCurrency">
+      <End Role="LegalEntity" EntitySet="LegalEntities" />
+      <End Role="Currency" EntitySet="Currencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityAsset_inherits_Asset" Association="Numerics.Model.Store.FK_SecurityAsset_inherits_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="SecurityAsset" EntitySet="Assets_SecurityAsset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RepoAsset_inherits_Asset" Association="Numerics.Model.Store.FK_RepoAsset_inherits_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="RepoAsset" EntitySet="Assets_RepoAsset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityPosition_inherits_Position" Association="Numerics.Model.Store.FK_SecurityPosition_inherits_Position">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="SecurityPosition" EntitySet="Positions_SecurityPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CashPosition_inherits_Position" Association="Numerics.Model.Store.FK_CashPosition_inherits_Position">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="CashPosition" EntitySet="Positions_CashPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FutureAsset_inherits_Asset" Association="Numerics.Model.Store.FK_FutureAsset_inherits_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="FutureAsset" EntitySet="Assets_FutureAsset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityTrade_inherits_Trade" Association="Numerics.Model.Store.FK_SecurityTrade_inherits_Trade">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="SecurityTrade" EntitySet="Trades_SecurityTrade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RepoTrade_inherits_Trade" Association="Numerics.Model.Store.FK_RepoTrade_inherits_Trade">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="RepoTrade" EntitySet="Trades_RepoTrade" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductSubFamilyID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReferenceDate" Type="datetime" Nullable="false" />
+    <Property Name="Book_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductFamilies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductSubFamilies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductFamilyID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Counterparties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prices">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpeningPrice" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClosingPrice" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReferenceDate" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trades">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Book_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CashEvents">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReferenceDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LegalEntities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Currency_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LegalEntityID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CashFlows">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Currencies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assets_SecurityAsset">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assets_RepoAsset">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions_SecurityPosition">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions_CashPosition">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assets_FutureAsset">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trades_SecurityTrade">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trades_RepoTrade">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ProductFamilyProductSubFamily">
+    <End Role="ProductFamily" Type="Numerics.Model.Store.ProductFamilies" Multiplicity="1" />
+    <End Role="ProductSubFamily" Type="Numerics.Model.Store.ProductSubFamilies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductFamily">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductSubFamily">
+        <PropertyRef Name="ProductFamilyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductSubFamilyProduct">
+    <End Role="ProductSubFamily" Type="Numerics.Model.Store.ProductSubFamilies" Multiplicity="1" />
+    <End Role="Product" Type="Numerics.Model.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductSubFamily">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductSubFamilyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LegalEntityBook">
+    <End Role="LegalEntity" Type="Numerics.Model.Store.LegalEntities" Multiplicity="1" />
+    <End Role="Book" Type="Numerics.Model.Store.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LegalEntity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="LegalEntityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TradeBook">
+    <End Role="Trade" Type="Numerics.Model.Store.Trades" Multiplicity="*" />
+    <End Role="Book" Type="Numerics.Model.Store.Books" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Trade">
+        <PropertyRef Name="Book_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PositionBook">
+    <End Role="Position" Type="Numerics.Model.Store.Positions" Multiplicity="*" />
+    <End Role="Book" Type="Numerics.Model.Store.Books" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Position">
+        <PropertyRef Name="Book_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LegalEntityCurrency">
+    <End Role="LegalEntity" Type="Numerics.Model.Store.LegalEntities" Multiplicity="*" />
+    <End Role="Currency" Type="Numerics.Model.Store.Currencies" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LegalEntity">
+        <PropertyRef Name="Currency_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityAsset_inherits_Asset">
+    <End Role="Asset" Type="Numerics.Model.Store.Assets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SecurityAsset" Type="Numerics.Model.Store.Assets_SecurityAsset" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SecurityAsset">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RepoAsset_inherits_Asset">
+    <End Role="Asset" Type="Numerics.Model.Store.Assets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RepoAsset" Type="Numerics.Model.Store.Assets_RepoAsset" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RepoAsset">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityPosition_inherits_Position">
+    <End Role="Position" Type="Numerics.Model.Store.Positions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SecurityPosition" Type="Numerics.Model.Store.Positions_SecurityPosition" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SecurityPosition">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CashPosition_inherits_Position">
+    <End Role="Position" Type="Numerics.Model.Store.Positions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CashPosition" Type="Numerics.Model.Store.Positions_CashPosition" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CashPosition">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FutureAsset_inherits_Asset">
+    <End Role="Asset" Type="Numerics.Model.Store.Assets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FutureAsset" Type="Numerics.Model.Store.Assets_FutureAsset" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FutureAsset">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityTrade_inherits_Trade">
+    <End Role="Trade" Type="Numerics.Model.Store.Trades" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SecurityTrade" Type="Numerics.Model.Store.Trades_SecurityTrade" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Trade">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SecurityTrade">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RepoTrade_inherits_Trade">
+    <End Role="Trade" Type="Numerics.Model.Store.Trades" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RepoTrade" Type="Numerics.Model.Store.Trades_RepoTrade" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Trade">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RepoTrade">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Numerics.Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="NumericsContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="Numerics.Model.Product" cg:GetterAccess="Internal" />
+          <EntitySet Name="Assets" EntityType="Numerics.Model.Asset" cg:GetterAccess="Internal" />
+          <EntitySet Name="Positions" EntityType="Numerics.Model.Position" cg:GetterAccess="Internal" />
+          <EntitySet Name="ProductFamilies" EntityType="Numerics.Model.ProductFamily" cg:GetterAccess="Internal" />
+          <EntitySet Name="ProductSubFamilies" EntityType="Numerics.Model.ProductSubFamily" cg:GetterAccess="Internal" />
+          <AssociationSet Name="ProductFamilyProductSubFamily" Association="Numerics.Model.ProductFamilyProductSubFamily">
+            <End Role="ProductFamily" EntitySet="ProductFamilies" />
+            <End Role="ProductSubFamily" EntitySet="ProductSubFamilies" />
+          </AssociationSet>
+          <AssociationSet Name="ProductSubFamilyProduct" Association="Numerics.Model.ProductSubFamilyProduct">
+            <End Role="ProductSubFamily" EntitySet="ProductSubFamilies" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="Counterparties" EntityType="Numerics.Model.Counterparty" cg:GetterAccess="Internal" />
+          <EntitySet Name="Prices" EntityType="Numerics.Model.Price" cg:GetterAccess="Internal" />
+          <EntitySet Name="Trades" EntityType="Numerics.Model.Trade" cg:GetterAccess="Internal" />
+          <EntitySet Name="CashEvents" EntityType="Numerics.Model.CashEvent" cg:GetterAccess="Internal" />
+          <EntitySet Name="LegalEntities" EntityType="Numerics.Model.LegalEntity" cg:GetterAccess="Internal" />
+          <EntitySet Name="Books" EntityType="Numerics.Model.Book" cg:GetterAccess="Internal" />
+          <AssociationSet Name="LegalEntityBook" Association="Numerics.Model.LegalEntityBook">
+            <End Role="LegalEntity" EntitySet="LegalEntities" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="TradeBook" Association="Numerics.Model.TradeBook">
+            <End Role="Trade" EntitySet="Trades" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="PositionBook" Association="Numerics.Model.PositionBook">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <EntitySet Name="CashFlows" EntityType="Numerics.Model.CashFlow" cg:GetterAccess="Internal" />
+          <EntitySet Name="Currencies" EntityType="Numerics.Model.Currency" cg:GetterAccess="Internal" />
+          <AssociationSet Name="LegalEntityCurrency" Association="Numerics.Model.LegalEntityCurrency">
+            <End Role="LegalEntity" EntitySet="LegalEntities" />
+            <End Role="Currency" EntitySet="Currencies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Product" cg:TypeAccess="Public">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SubFamily" Relationship="Numerics.Model.ProductSubFamilyProduct" FromRole="Product" ToRole="ProductSubFamily" cg:SetterAccess="Internal" cg:GetterAccess="Internal" />
+          <Property Type="Int32" Name="ProductSubFamilyID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Asset" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SecurityAsset" cg:TypeAccess="Internal" BaseType="Numerics.Model.Asset">
+        </EntityType>
+        <EntityType Name="RepoAsset" BaseType="Numerics.Model.Asset" cg:TypeAccess="Internal">
+        </EntityType>
+        <EntityType Name="SecurityPosition" cg:TypeAccess="Internal" BaseType="Numerics.Model.Position">
+          </EntityType>
+        <EntityType Name="Position" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Amount" Nullable="false" />
+          <Property Type="DateTime" Name="ReferenceDate" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Numerics.Model.PositionBook" FromRole="Position" ToRole="Book" cg:SetterAccess="Internal" cg:GetterAccess="Internal" />
+        </EntityType>
+        <EntityType Name="CashPosition" cg:TypeAccess="Internal" BaseType="Numerics.Model.Position">
+        </EntityType>
+        <EntityType Name="ProductFamily" cg:TypeAccess="Public">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SubFamily" Relationship="Numerics.Model.ProductFamilyProductSubFamily" FromRole="ProductFamily" ToRole="ProductSubFamily" cg:SetterAccess="Internal" cg:GetterAccess="Internal" />
+        </EntityType>
+        <EntityType Name="ProductSubFamily" cg:TypeAccess="Public">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Family" Relationship="Numerics.Model.ProductFamilyProductSubFamily" FromRole="ProductSubFamily" ToRole="ProductFamily" cg:SetterAccess="Internal" cg:GetterAccess="Internal" />
+          <Property Type="Int32" Name="ProductFamilyID" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Numerics.Model.ProductSubFamilyProduct" FromRole="ProductSubFamily" ToRole="Product" cg:SetterAccess="Internal" cg:GetterAccess="Internal" />
+        </EntityType>
+        <Association Name="ProductFamilyProductSubFamily">
+          <End Type="Numerics.Model.ProductFamily" Role="ProductFamily" Multiplicity="1" />
+          <End Type="Numerics.Model.ProductSubFamily" Role="ProductSubFamily" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductFamily">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductSubFamily">
+              <PropertyRef Name="ProductFamilyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductSubFamilyProduct">
+          <End Type="Numerics.Model.ProductSubFamily" Role="ProductSubFamily" Multiplicity="1" />
+          <End Type="Numerics.Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductSubFamily">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductSubFamilyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FutureAsset" cg:TypeAccess="Internal" BaseType="Numerics.Model.Asset">
+        </EntityType>
+        <EntityType Name="Counterparty" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Price" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="OpeningPrice" Nullable="false" />
+          <Property Type="String" Name="ClosingPrice" Nullable="false" />
+          <Property Type="String" Name="ReferenceDate" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trade" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Book" Relationship="Numerics.Model.TradeBook" FromRole="Trade" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="SecurityTrade" cg:TypeAccess="Internal" BaseType="Numerics.Model.Trade">
+          </EntityType>
+        <EntityType Name="RepoTrade" cg:TypeAccess="Internal" BaseType="Numerics.Model.Trade">
+        </EntityType>
+        <EntityType Name="CashEvent" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="ReferenceDate" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LegalEntity" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Book" Relationship="Numerics.Model.LegalEntityBook" FromRole="LegalEntity" ToRole="Book" cg:SetterAccess="Internal" cg:GetterAccess="Internal" />
+          <NavigationProperty Name="Currency" Relationship="Numerics.Model.LegalEntityCurrency" FromRole="LegalEntity" ToRole="Currency" cg:GetterAccess="Internal" cg:SetterAccess="Internal" />
+        </EntityType>
+        <EntityType Name="Book" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="LegalEntity" Relationship="Numerics.Model.LegalEntityBook" FromRole="Book" ToRole="LegalEntity" />
+          <Property Type="Int32" Name="LegalEntityID" Nullable="false" />
+        </EntityType>
+        <Association Name="LegalEntityBook">
+          <End Type="Numerics.Model.LegalEntity" Role="LegalEntity" Multiplicity="1" />
+          <End Type="Numerics.Model.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LegalEntity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="LegalEntityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TradeBook">
+          <End Type="Numerics.Model.Trade" Role="Trade" Multiplicity="1" />
+          <End Type="Numerics.Model.Book" Role="Book" Multiplicity="1" />
+        </Association>
+        <Association Name="PositionBook">
+          <End Type="Numerics.Model.Position" Role="Position" Multiplicity="1" />
+          <End Type="Numerics.Model.Book" Role="Book" Multiplicity="1" />
+        </Association>
+        <EntityType Name="CashFlow" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Currency" cg:TypeAccess="Internal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="LegalEntityCurrency">
+          <End Type="Numerics.Model.LegalEntity" Role="LegalEntity" Multiplicity="1" />
+          <End Type="Numerics.Model.Currency" Role="Currency" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NumericsModelStoreContainer" CdmEntityContainer="NumericsContext">
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProductSubFamilyID" ColumnName="ProductSubFamilyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assets">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.Asset)">
+        <MappingFragment StoreEntitySet="Assets">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.SecurityAsset)">
+        <MappingFragment StoreEntitySet="Assets_SecurityAsset">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.RepoAsset)">
+        <MappingFragment StoreEntitySet="Assets_RepoAsset">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.FutureAsset)">
+        <MappingFragment StoreEntitySet="Assets_FutureAsset">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.Position)">
+        <MappingFragment StoreEntitySet="Positions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReferenceDate" ColumnName="ReferenceDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.SecurityPosition)">
+        <MappingFragment StoreEntitySet="Positions_SecurityPosition">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.CashPosition)">
+        <MappingFragment StoreEntitySet="Positions_CashPosition">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductFamilies">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.ProductFamily)">
+        <MappingFragment StoreEntitySet="ProductFamilies">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSubFamilies">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.ProductSubFamily)">
+        <MappingFragment StoreEntitySet="ProductSubFamilies">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProductFamilyID" ColumnName="ProductFamilyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Counterparties">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.Counterparty)">
+        <MappingFragment StoreEntitySet="Counterparties">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prices">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.Price)">
+        <MappingFragment StoreEntitySet="Prices">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OpeningPrice" ColumnName="OpeningPrice" />
+          <ScalarProperty Name="ClosingPrice" ColumnName="ClosingPrice" />
+          <ScalarProperty Name="ReferenceDate" ColumnName="ReferenceDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trades">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.Trade)">
+        <MappingFragment StoreEntitySet="Trades">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.SecurityTrade)">
+        <MappingFragment StoreEntitySet="Trades_SecurityTrade">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.RepoTrade)">
+        <MappingFragment StoreEntitySet="Trades_RepoTrade">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CashEvents">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.CashEvent)">
+        <MappingFragment StoreEntitySet="CashEvents">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ReferenceDate" ColumnName="ReferenceDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LegalEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.LegalEntity)">
+        <MappingFragment StoreEntitySet="LegalEntities">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.Book)">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LegalEntityID" ColumnName="LegalEntityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CashFlows">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.CashFlow)">
+        <MappingFragment StoreEntitySet="CashFlows">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currencies">
+      <EntityTypeMapping TypeName="IsTypeOf(Numerics.Model.Currency)">
+        <MappingFragment StoreEntitySet="Currencies">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="TradeBook" TypeName="Numerics.Model.TradeBook" StoreEntitySet="Trades">
+      <EndProperty Name="Book">
+        <ScalarProperty Name="ID" ColumnName="Book_ID" />
+      </EndProperty>
+      <EndProperty Name="Trade">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PositionBook" TypeName="Numerics.Model.PositionBook" StoreEntitySet="Positions">
+      <EndProperty Name="Book">
+        <ScalarProperty Name="ID" ColumnName="Book_ID" />
+      </EndProperty>
+      <EndProperty Name="Position">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LegalEntityCurrency" TypeName="Numerics.Model.LegalEntityCurrency" StoreEntitySet="LegalEntities">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="ID" ColumnName="Currency_ID" />
+      </EndProperty>
+      <EndProperty Name="LegalEntity">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

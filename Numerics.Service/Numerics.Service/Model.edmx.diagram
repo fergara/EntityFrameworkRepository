@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dff684edaf3549c3b09b9c912b4bee49" Name="Numerics.Model" >
+        <EntityTypeShape EntityType="Numerics.Model.Product" Width="1.875" PointX="5.5" PointY="1" />
+        <EntityTypeShape EntityType="Numerics.Model.Asset" Width="1.5" PointX="3.375" PointY="6.375" />
+        <EntityTypeShape EntityType="Numerics.Model.SecurityAsset" Width="1.5" PointX="1.125" PointY="8.5" />
+        <InheritanceConnector EntityType="Numerics.Model.SecurityAsset" />
+        <EntityTypeShape EntityType="Numerics.Model.RepoAsset" Width="1.5" PointX="3.375" PointY="8.5" />
+        <InheritanceConnector EntityType="Numerics.Model.RepoAsset" />
+        <EntityTypeShape EntityType="Numerics.Model.SecurityPosition" Width="1.5" PointX="19.625" PointY="3.625" />
+        <EntityTypeShape EntityType="Numerics.Model.Position" Width="1.5" PointX="9.75" PointY="1.125" />
+        <InheritanceConnector EntityType="Numerics.Model.SecurityPosition" />
+        <EntityTypeShape EntityType="Numerics.Model.CashPosition" Width="1.5" PointX="21.875" PointY="3.625" />
+        <InheritanceConnector EntityType="Numerics.Model.CashPosition" />
+        <EntityTypeShape EntityType="Numerics.Model.ProductFamily" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Numerics.Model.ProductSubFamily" Width="1.75" PointX="3" PointY="0.875" IsExpanded="false" />
+        <AssociationConnector Association="Numerics.Model.ProductFamilyProductSubFamily" />
+        <AssociationConnector Association="Numerics.Model.ProductSubFamilyProduct" />
+        <EntityTypeShape EntityType="Numerics.Model.FutureAsset" Width="1.5" PointX="5.625" PointY="8.5" />
+        <InheritanceConnector EntityType="Numerics.Model.FutureAsset" />
+        <EntityTypeShape EntityType="Numerics.Model.Counterparty" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Numerics.Model.Price" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Numerics.Model.Trade" Width="1.5" PointX="12.75" PointY="1.5" />
+        <EntityTypeShape EntityType="Numerics.Model.SecurityTrade" Width="1.5" PointX="7.625" PointY="3.625" />
+        <InheritanceConnector EntityType="Numerics.Model.SecurityTrade" />
+        <EntityTypeShape EntityType="Numerics.Model.RepoTrade" Width="1.5" PointX="15.875" PointY="3.625" />
+        <InheritanceConnector EntityType="Numerics.Model.RepoTrade" />
+        <EntityTypeShape EntityType="Numerics.Model.CashEvent" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Numerics.Model.LegalEntity" Width="1.5" PointX="10.5" PointY="3.75" />
+        <EntityTypeShape EntityType="Numerics.Model.Book" Width="1.5" PointX="12.75" PointY="3.625" />
+        <AssociationConnector Association="Numerics.Model.LegalEntityBook" />
+        <AssociationConnector Association="Numerics.Model.TradeBook" />
+        <AssociationConnector Association="Numerics.Model.PositionBook" />
+        <EntityTypeShape EntityType="Numerics.Model.CashFlow" Width="1.5" PointX="6.75" PointY="6" />
+        <EntityTypeShape EntityType="Numerics.Model.Currency" Width="1.5" PointX="9.125" PointY="6.125" />
+        <AssociationConnector Association="Numerics.Model.LegalEntityCurrency" />
+        <InheritanceConnector EntityType="Numerics.Model.SecurityPosition" />
+        <InheritanceConnector EntityType="Numerics.Model.SecurityTrade" />
+        <InheritanceConnector EntityType="Numerics.Model.CashPosition" />
+        <InheritanceConnector EntityType="Numerics.Model.CashPosition" />
+        <InheritanceConnector EntityType="Numerics.Model.SecurityPosition" />
+        <InheritanceConnector EntityType="Numerics.Model.SecurityTrade" />
+        <InheritanceConnector EntityType="Numerics.Model.RepoTrade" />
+        <InheritanceConnector EntityType="Numerics.Model.RepoTrade" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
